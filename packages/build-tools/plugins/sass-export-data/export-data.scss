@@ -9,12 +9,12 @@
 @mixin export-data($filename, $var) {
   // The `export_data` function is a custom function added to Sass.
   // The `$data` var is weird, but needed.
-  $data: export_data($filename, $var);
+  // $data: export_data($filename, $var);
 }
 
 
 @mixin export-data-sync($filename, $var) {
   // The `export_data` function is a custom function added to Sass.
   // The `$data` var is weird, but needed.
-  $data: export_data_sync($filename, $var);
+  // $data: export_data_sync($filename, $var);
 }

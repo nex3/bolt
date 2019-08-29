@@ -1,3 +1,7 @@
+$bolt-namespace: bolt;
+$bolt-css-vars-json-data-export: theming-css-vars;
+$bolt-lang: null;
+
 @import '@bolt/global/styles/index.scss';
 @import '@bolt/core/styles/index.scss';
 @import '@bolt/components-icon/src/icon.scss';
