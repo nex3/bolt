@@ -1,20 +1,20 @@
+const sass = require('sass')
+
 function getValue(a) {
   let value;
   let i;
-  switch (a.constructor.name) {
-    case 'SassList':
+
+  if (a instanceof sass.types.List) {
       value = [];
       for (i = 0; i < a.getLength(); i++) {
         value.push(getValue(a.getValue(i)));
       }
-      break;
-    case 'SassMap':
+  } else if (a instanceof sass.types.Map) {
       value = {};
       for (i = 0; i < a.getLength(); i++) {
         value[a.getKey(i).getValue()] = getValue(a.getValue(i));
       }
-      break;
-    case 'SassColor':
+  } else if (a instanceof sass.types.Color) {
       if (a.getA() === 1) {
         value = `rgb(${Math.round(a.getR())}, ${Math.round(
           a.getG(),
@@ -24,14 +24,12 @@ function getValue(a) {
           a.getG(),
         )}, ${Math.round(a.getB())}, ${a.getA()})`;
       }
-      break;
-    case 'SassNumber':
+  } else if (a instanceof sass.types.Number) {
       value = a.getValue();
       if (a.getUnit()) {
         value += a.getUnit();
       }
-      break;
-    default:
+  } else {
       value = a.getValue();
   }
   return value;
